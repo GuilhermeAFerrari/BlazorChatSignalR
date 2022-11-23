@@ -6,11 +6,11 @@ namespace BlazorChatSignalR.Server.Hubs
     {
         public override async Task OnConnectedAsync()
         {
-            await SendMessageAsync("", "User connected!");
+            await AddMessageToChat("", "User connected!");
             await base.OnConnectedAsync();
         }
 
-        public async Task SendMessageAsync(string user, string message)
+        public async Task AddMessageToChat(string user, string message)
         {
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
